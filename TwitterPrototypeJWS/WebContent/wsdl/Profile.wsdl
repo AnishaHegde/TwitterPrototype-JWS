@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://com" xmlns:intf="http://com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="retrieveTweet">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="retrieveTweetResponse">
+    <complexType>
+     <sequence>
+      <element name="retrieveTweetReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertTweet">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:string"/>
+      <element name="tweetTextId" type="xsd:string"/>
+      <element name="tweetData" type="xsd:string"/>
+      <element name="hashtagData" type="xsd:string"/>
+      <element name="isCreator" type="xsd:string"/>
+      <element name="currentDate" type="xsd:string"/>
+      <element name="userHandle" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertTweetResponse">
+    <complexType>
+     <sequence>
+      <element name="insertTweetReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="retrieveTweetRequest">
+
+      <wsdl:part element="impl:retrieveTweet" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertTweetRequest">
+
+      <wsdl:part element="impl:insertTweet" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertTweetResponse">
+
+      <wsdl:part element="impl:insertTweetResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveTweetResponse">
+
+      <wsdl:part element="impl:retrieveTweetResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Profile">
+
+      <wsdl:operation name="retrieveTweet">
+
+         <wsdl:input message="impl:retrieveTweetRequest" name="retrieveTweetRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:retrieveTweetResponse" name="retrieveTweetResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertTweet">
+
+         <wsdl:input message="impl:insertTweetRequest" name="insertTweetRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:insertTweetResponse" name="insertTweetResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ProfileSoapBinding" type="impl:Profile">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="retrieveTweet">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="retrieveTweetRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="retrieveTweetResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertTweet">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="insertTweetRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="insertTweetResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ProfileService">
+
+      <wsdl:port binding="impl:ProfileSoapBinding" name="Profile">
+
+         <wsdlsoap:address location="http://localhost:8080/TwitterPrototypeJWS/services/Profile"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
